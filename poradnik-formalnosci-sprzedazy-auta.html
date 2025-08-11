@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>123kupujemy.pl - Formalności przy sprzedaży auta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+            --header-bg: #2c3e50;
+            --footer-bg: #2c3e50;
+            --text-light: #ecf0f1;
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --text-color: #ecf0f1;
+            --bg-color: #1a1a1a;
+            --card-bg: #2c3e50;
+            --header-bg: #1a1a1a;
+            --footer-bg: #1a1a1a;
+            --text-light: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--secondary-color);
+            transform: rotate(30deg);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: var(--transition);
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            font-size: 2rem;
+            color: var(--text-light);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-subpage {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1549465220-1a9088f11558?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1, .hero-subpage h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .hero p, .hero-subpage p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-google-form {
+            background-color: #4285F4;
+        }
+
+        .btn-google-form:hover {
+            background-color: #357ae8;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            animation: fly-in-left 1s forwards cubic-bezier(0.2, 0.8, 0.2, 1.2);
+            opacity: 0;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .features, .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card, .guide-card, .review-card, .article-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-align: center;
+            animation: fly-in-up 1s forwards;
+            opacity: 0;
+        }
+
+        .feature-card:hover, .guide-card:hover, .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3, .guide-card h3, .review-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text, .about-image {
+            animation: fly-in-left 1s forwards;
+            opacity: 0;
+        }
+
+        .about-image {
+            animation: fly-in-right 1s forwards;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            text-align: center;
+        }
+
+        .contact-options {
+            margin-top: 2rem;
+        }
+
+        .contact-options p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: #666;
+        }
+
+        .contact-divider::before, .contact-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ccc;
+        }
+
+        .contact-divider span {
+            padding: 0 1rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+            outline: none;
+        }
+
+        .review-card {
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            min-height: 250px;
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-author {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-top: auto;
+        }
+
+        .guide-card-content {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .guide-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .guide-card h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content {
+            text-align: left;
+        }
+
+        .article-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .article-content img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+        }
+
+        .article-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .article-content ul {
+            list-style-type: disc;
+            margin-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--text-light);
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-info, .footer-social, .footer-nav {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+        }
+
+        .footer-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-social a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        .footer-nav ul {
+            list-style: none;
+        }
+
+        .footer-nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Animations */
+        @keyframes fly-in-up {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fly-in-left {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fly-in-right {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo"><i class="fas fa-car-side"></i>123kupujemy.pl</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="index.html#about">O nas</a></li>
+                    <li><a href="index.html#services">Usługi</a></li>
+                    <li><a href="poradniki.html">Poradniki</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-subpage">
+            <div class="container hero-content">
+                <h1>Formalności przy sprzedaży auta</h1>
+            </div>
+        </section>
+
+        <section class="article">
+            <div class="container article-content">
+                <h1>Formalności przy sprzedaży samochodu - wszystko, co musisz wiedzieć</h1>
+                <img src="https://images.unsplash.com/photo-1549465220-1a9088f11558?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Formalności przy sprzedaży auta">
+                <p>Sprzedaż samochodu to proces, który wymaga dopełnienia kilku kluczowych formalności. Niezależnie od tego, czy sprzedajesz auto osobie prywatnej, czy firmie takiej jak 123kupujemy.pl, musisz zadbać o odpowiednie dokumenty i zgłoszenia. Poniżej przedstawiamy najważniejsze kroki, które powinieneś podjąć, aby transakcja przebiegła sprawnie i zgodnie z prawem.</p>
+                <h3>1. Umowa kupna-sprzedaży</h3>
+                <p>Podstawowym dokumentem jest umowa kupna-sprzedaży samochodu. Powinna zawierać następujące informacje:</p>
+                <ul>
+                    <li>Dane sprzedającego i kupującego (imię, nazwisko, PESEL/NIP, adres).</li>
+                    <li>Dokładne dane pojazdu (marka, model, rok produkcji, numer VIN, numer rejestracyjny).</li>
+                    <li>Cena sprzedaży.</li>
+                    <li>Oświadczenia stron o stanie pojazdu.</li>
+                    <li>Data i miejsce zawarcia umowy.</li>
+                </ul>
+                <h3>2. Wymagane dokumenty</h3>
+                <p>Przygotuj następujące dokumenty, które przekażesz nabywcy:</p>
+                <ul>
+                    <li>Dowód rejestracyjny pojazdu.</li>
+                    <li>Karta pojazdu (jeśli była wydana).</li>
+                    <li>Polisa ubezpieczeniowa OC.</li>
+                    <li>Kluczyki do samochodu.</li>
+                    <li>Wszelkie inne dokumenty, np. książka serwisowa, faktury.</li>
+                </ul>
+                <h3>3. Zgłoszenie sprzedaży w urzędzie i u ubezpieczyciela</h3>
+                <p>Po sprzedaży masz 30 dni na zgłoszenie tego faktu w wydziale komunikacji, a także 14 dni na poinformowanie ubezpieczyciela o zmianie właściciela. Nabywca jest zobowiązany do przerejestrowania pojazdu w ciągu 30 dni od zakupu.</p>
+                <p>Pamiętaj, że w 123kupujemy.pl pomagamy Ci w dopełnieniu wszystkich formalności, abyś mógł spać spokojnie. Skontaktuj się z nami już dziś!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h4>123kupujemy.pl</h4>
+                <p>Szybki i profesjonalny skup aut na Śląsku.</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html">Strona Główna</a></li>
+                    <li><a href="poradniki.html">Poradniki</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const nav = document.querySelector('nav');
+            const themeToggle = document.querySelector('.theme-toggle');
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+            // Hamburger menu functionality
+            hamburger.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+
+            // Theme toggle functionality
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            }
+
+            let currentTheme = localStorage.getItem('theme');
+            if (!currentTheme) {
+                currentTheme = prefersDarkScheme.matches ? 'dark' : 'light';
+            }
+            setTheme(currentTheme);
+
+            themeToggle.addEventListener('click', () => {
+                let newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+                setTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+
+            // Scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section-title, .feature-card, .about-content, .review-card, .guide-card').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
