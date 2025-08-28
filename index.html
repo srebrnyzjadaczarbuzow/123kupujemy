@@ -4,40 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skup Aut Śląsk | Szybka Wycena, Płatność Gotówką | 123kupujemy.pl</title>
-    <meta name="description" content="Profesjonalny i szybki skup aut na Śląsku. Prowadzimy skup samochodów używanych, powypadkowych, uszkodzonych, bez ważnego przeglądu oraz z dużym przebiegiem. Szybka i darmowa wycena, płatność gotówką, dojazd do klienta na terenie miast: Katowice, Częstochowa, Gliwice, Zabrze i reszty Śląska.">
+    <meta name="description" content="Profesjonalny skup aut w województwie Śląskim">
     <link rel="canonical" href="https://www.123kupujemy.pl/">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ZMIANA: Nowa paleta kolorów inspirowana filmem 'Auta' */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --card-bg: #fff;
-            --header-bg: #2c3e50;
-            --footer-bg: #2c3e50;
-            --text-light: #ecf0f1;
+            --primary-color: #b40a0ac5; /* Czerwień Zygzaka McQueena */
+            --secondary-color: #FFC107; /* Żółty wyścigowy */
+            --text-color: #212121; /* Ciemny, prawie czarny */
+            --bg-color: #F5EFE6; /* Kolor pustyni / Radiator Springs */
+            --card-bg: #FFFFFF;
+            --header-bg: #212121; /* Kolor asfaltu */
+            --footer-bg: #212121;
+            --text-light: #f1f1f1;
             --transition: all 0.3s ease;
         }
 
         .dark-mode {
-            --primary-color: #3498db;
-            --secondary-color: #2980b9;
-            --text-color: #ecf0f1;
+            --primary-color: #b40a0ac5; /* Czerwień Zygzaka McQueena */
+            --secondary-color: #FFC107;
+            --text-color: #F5EFE6;
             --bg-color: #1a1a1a;
-            --card-bg: #2c3e50;
-            --header-bg: #1a1a1a;
-            --footer-bg: #1a1a1a;
-            --text-light: #ecf0f1;
+            --card-bg: #2c2c2c;
+            --header-bg: #000;
+            --footer-bg: #000;
+            --text-light: #f1f1f1;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* ZMIANA: Ustawienie domyślnej czcionki */
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* ZMIANA: Dodanie cienia do tekstu dla nagłówków, aby nadać im styl 'Cars' */
+        h1, h2, h3, .logo span {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         body {
@@ -75,7 +90,7 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2.2rem; /* Powiększone logo */
             font-weight: bold;
             color: var(--text-light);
             text-decoration: none;
@@ -115,9 +130,10 @@
         nav ul li a {
             color: var(--text-light);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 700; /* Pogrubiona nawigacja */
             transition: var(--transition);
             position: relative;
+            font-size: 1.1rem;
         }
 
         nav ul li a:hover {
@@ -128,7 +144,7 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 3px; /* Grubsze podkreślenie */
             background: var(--secondary-color);
             bottom: -5px;
             left: 0;
@@ -172,11 +188,12 @@
             transform: translateY(-11px) rotate(-45deg);
         }
 
+        /* ZMIANA: Nowe tło sekcji hero, bardziej w stylu 'Cars' */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1533973413636-969c3623a763?q=80&w=1470&auto=format&fit=crop') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding-top: 80px;
@@ -194,31 +211,34 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 4rem; /* Powiększony tytuł */
             margin-bottom: 1rem;
             color: var(--text-light);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5); /* Mocniejszy cień */
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             color: var(--text-light);
+            font-weight: 700;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: white;
             padding: 0.8rem 1.8rem;
-            border-radius: 30px;
+            border-radius: 8px; /* Mniej zaokrąglone, bardziej "solidne" */
             text-decoration: none;
             font-weight: bold;
             transition: var(--transition);
-            border: none;
+            border: 2px solid var(--primary-color);
             cursor: pointer;
             font-size: 1rem;
             margin-top: 0.5rem;
             margin-right: 1rem;
+            text-transform: uppercase;
         }
 
         .btn:last-child {
@@ -226,13 +246,25 @@
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #A00000;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+        
+        /* ZMIANA: Drugi przycisk ma teraz kolor drugorzędny */
+        .btn.btn-secondary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: #333;
+        }
+        .btn.btn-secondary:hover {
+            background-color: #FFB300;
+        }
+
 
         .btn-phone {
             background-color: #27ae60;
+            border-color: #27ae60;
         }
 
         .btn-phone:hover {
@@ -264,7 +296,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             color: var(--primary-color);
             position: relative;
         }
@@ -272,8 +304,8 @@
         .section-title::after {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background: var(--secondary-color);
             bottom: -10px;
             left: 50%;
@@ -291,7 +323,8 @@
             background-color: var(--card-bg);
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid #ddd;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
             text-align: center;
             animation: fadeInUp 1s ease-in-out;
@@ -309,19 +342,20 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary-color);
         }
 
         .feature-icon {
             font-size: 3rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             margin-bottom: 1.5rem;
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
 
         .about-content {
@@ -353,6 +387,7 @@
             width: 100%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
         }
 
         .location-list {
@@ -365,17 +400,19 @@
         }
 
         .location-list li {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: bold;
             display: flex;
             align-items: center;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
         }
 
         .location-list li i {
             margin-right: 0.5rem;
+            color: var(--secondary-color);
         }
 
         .form-container {
@@ -387,6 +424,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s ease-in-out;
             text-align: center;
+            border: 3px solid #ddd;
         }
 
         .contact-options {
@@ -403,13 +441,15 @@
             align-items: center;
             margin: 2rem 0;
             color: #666;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
         }
 
         .contact-divider::before,
         .contact-divider::after {
             content: "";
             flex: 1;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px dashed #ddd;
         }
 
         .contact-divider span {
@@ -421,7 +461,7 @@
         }
 
         .contact-info a {
-            color: var(--secondary-color);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
@@ -429,6 +469,7 @@
 
         .contact-info a:hover {
             text-decoration: underline;
+            color: var(--secondary-color);
         }
 
         footer {
@@ -447,7 +488,7 @@
 
         .footer-column h3 {
             margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             color: var(--secondary-color);
         }
 
@@ -548,11 +589,11 @@
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
 
             .about-content {
@@ -564,7 +605,7 @@
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
         }
 
@@ -603,6 +644,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.4s ease-in-out;
+            border: 3px solid #ddd;
         }
 
         .opinie-card.active {
@@ -612,8 +654,9 @@
 
         .opinie-card::before {
             content: '\201C';
-            font-size: 5rem;
-            color: var(--secondary-color);
+            font-family: 'Bangers', cursive;
+            font-size: 6rem;
+            color: var(--primary-color);
             opacity: 0.2;
             position: absolute;
             top: 10px;
@@ -632,6 +675,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 1rem;
+            border: 2px solid var(--secondary-color);
         }
 
         .rating {
@@ -653,14 +697,14 @@
             background: none;
             border: none;
             font-size: 2rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             cursor: pointer;
             pointer-events: all;
             transition: var(--transition);
         }
 
         .slider-nav button:hover {
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .cookie-consent {
@@ -692,7 +736,7 @@
         }
 
         .cookie-btn {
-            background: var(--secondary-color);
+            background: var(--primary-color);
             color: white;
             border: none;
             padding: 0.5rem 1rem;
@@ -702,7 +746,7 @@
         }
 
         .cookie-btn:hover {
-            background: var(--primary-color);
+            background: #A00000;
         }
 
         #scrollToTopBtn {
@@ -714,7 +758,7 @@
             font-size: 1.5rem;
             border: none;
             outline: none;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: white;
             cursor: pointer;
             padding: 15px;
@@ -724,7 +768,7 @@
         }
 
         #scrollToTopBtn:hover {
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
         }
     </style>
 </head>
@@ -732,7 +776,7 @@
     <header>
         <div class="container header-content">
             <a href="#home" class="logo">
-                <i class="fas fa-car"></i>
+                <i class="fas fa-bolt"></i>
                 <span>123kupujemy.pl</span>
             </a>
             <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menu nawigacyjne">
@@ -743,11 +787,8 @@
             <nav id="navMenu">
                 <ul>
                     <li><a href="#home">Strona główna</a></li>
-                    <li><a href="#dlaczego-my">Dlaczego my?</a></li>
                     <li><a href="#o-nas">O nas</a></li>
                     <li><a href="#obszar-dzialania">Obszar działania</a></li>
-                    <li><a href="#opinie">Opinie</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
                     <li><a href="poradniki.html">Poradniki</a></li>
                 </ul>
             </nav>
@@ -759,37 +800,37 @@
 
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Profesjonalny skup aut na Śląsku</h1>
-            <p>Kupujemy samochody gotówką w każdym stanie. Działamy na terenie całego Śląska!</p>
+            <h1>Profesjonalny skup Aut na terenie województwa Śląskiego</h1>
+            <p>Szybka gotówka, darmowa wycena i dojazd do Ciebie!</p>
             <a href="tel:+48576444751" class="btn btn-phone"><i class="fas fa-phone"></i> Zadzwoń: +48 576 444 751</a>
-            <a href="#kontakt" class="btn">Wypełnij darmowy formularz wyceny</a>
+            <a href="#kontakt" class="btn btn-secondary">Wypełnij Formularz Wyceny</a>
         </div>
     </section>
 
     <section id="dlaczego-my" class="hidden">
         <div class="container">
-            <h2 class="section-title">Dlaczego warto nam zaufać?</h2>
+            <h2 class="section-title">Dlaczego My?</h2>
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-road"></i>
                     </div>
-                    <h3>Dojazd do klienta</h3>
-                    <p>Przyjedziemy do Ciebie w dogodnym terminie, aby obejrzeć i wycenić Twój samochód. Oszczędzasz czas i nerwy!</p>
+                    <h3>Dojazd do Klienta</h3>
+                    <p>Nasz zespół dojedzie prosto do Twojego auta. Oszczędzasz czas i paliwo!</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-money-bill-wave"></i>
                     </div>
-                    <h3>Płatność gotówką</h3>
-                    <p>Oferujemy natychmiastową płatność gotówką za Twój samochód. Żadnych przelewów i czekania - pieniądze od ręki.</p>
+                    <h3>Płatność Gotówką</h3>
+                    <p>Płacimy od ręki, pełen bak gotówki! Bez czekania, bez zbędnych pit-stopów.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-calculator"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                     </div>
-                    <h3>Darmowa wycena</h3>
-                    <p>Wycenimy Twój samochód całkowicie za darmo, bez żadnych zobowiązań. Sprawdź, ile możesz dostać za swoje auto!</p>
+                    <h3>Ekspresowa Wycena</h3>
+                    <p>Wycenimy Twoje auto za darmo i bez zobowiązań!</p>
                 </div>
             </div>
         </div>
@@ -797,14 +838,18 @@
 
     <section id="o-nas" class="hidden">
         <div class="container">
-            <h2 class="section-title">O nas</h2>
+            <h2 class="section-title">Nasz Zespół</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>
-Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na terenie całego Śląska. Niezależnie od stanu technicznego, rocznika czy przebiegu, Twój samochód ma dla nas wartość. Działamy na rynku od 24 lat, co pozwala nam gwarantować szybką wycenę, uczciwą cenę i błyskawiczną transakcję. Wystarczy jeden telefon, a resztą zajmiemy się my. Zapewniamy odbiór auta i płatność gotówką na miejscu.</p>
+Od ponad 24 lat działamy na Śląsku, specjalizując się w skupie samochodów używanych. Jesteśmy rodzinną firmą, która stawia na rzetelność, zaufanie i indywidualne podejście do każdego klienta.
+
+Skupujemy auta sprawne technicznie – nie muszą być w idealnym stanie wizualnym ani bezwypadkowe. Interesują nas także samochody z dużym przebiegiem, śladami codziennego użytkowania czy starsze modele. Najważniejsze, aby pojazd nadawał się do jazdy.
+
+Oferujemy uczciwą wycenę, szybki przebieg transakcji i płatność w gotówce, bez zbędnych formalności. Jeden telefon wystarczy – wszystkim zajmiemy się za Ciebie.                    </p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1630871964787-c3cc1fc6f513?q=80&w=1068&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Zespół 123kupujemy.pl przy profesjonalnej wycenie samochodu na Śląsku">
+                    <img src="mareczekmaruszka.png" alt="Skup samochodów, nasz zespół">
                 </div>
             </div>
         </div>
@@ -812,31 +857,31 @@ Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na te
 
     <section id="obszar-dzialania" class="hidden">
         <div class="container">
-            <h2 class="section-title">Obszar działania - Skup aut Śląsk</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Działamy na terenie całego województwa śląskiego. Główne miasta, w których prowadzimy skup samochodów:</p>
+            <h2 class="section-title">Nasz Tor Wyścigowy - województwo Śląskie</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Działamy na terenie całego województwa śląskiego. Główne miasta, w których jesteśmy na co dzień:</p>
             <ul class="location-list">
-                <li><i class="fas fa-car"></i> Katowice</li>
-                <li><i class="fas fa-car"></i> Częstochowa</li>
-                <li><i class="fas fa-car"></i> Gliwice</li>
-                <li><i class="fas fa-car"></i> Zabrze</li>
-                <li><i class="fas fa-car"></i> Sosnowiec</li>
-                <li><i class="fas fa-car"></i> Rybnik</li>
-                <li><i class="fas fa-car"></i> Bytom</li>
-                <li><i class="fas fa-car"></i> Bielsko-Biała</li>
-                <li><i class="fas fa-car"></i> Dąbrowa Górnicza</li>
-                <li><i class="fas fa-car"></i> Ruda Śląska</li>
-                <li><i class="fas fa-car"></i> Tychy</li>
-                <li><i class="fas fa-car"></i> Chorzów</li>
-                <li><i class="fas fa-car"></i> Jaworzno</li>
-                <li><i class="fas fa-car"></i> Mysłowice</li>
-                <li><i class="fas fa-car"></i> Siemianowice Śląskie</li>
+                <li><i class="fas fa-car-side"></i> Katowice</li>
+                <li><i class="fas fa-car-side"></i> Częstochowa</li>
+                <li><i class="fas fa-car-side"></i> Gliwice</li>
+                <li><i class="fas fa-car-side"></i> Zabrze</li>
+                <li><i class="fas fa-car-side"></i> Sosnowiec</li>
+                <li><i class="fas fa-car-side"></i> Rybnik</li>
+                <li><i class="fas fa-car-side"></i> Bytom</li>
+                <li><i class="fas fa-car-side"></i> Bielsko-Biała</li>
+                <li><i class="fas fa-car-side"></i> Dąbrowa Górnicza</li>
+                <li><i class="fas fa-car-side"></i> Ruda Śląska</li>
+                <li><i class="fas fa-car-side"></i> Tychy</li>
+                <li><i class="fas fa-car-side"></i> Chorzów</li>
+                <li><i class="fas fa-car-side"></i> Jaworzno</li>
+                <li><i class="fas fa-car-side"></i> Mysłowice</li>
+                <li><i class="fas fa-car-side"></i> Siemianowice Śląskie</li>
             </ul>
         </div>
     </section>
 
     <section id="opinie" class="hidden">
         <div class="container">
-            <h2 class="section-title">Opinie naszych klientów</h2>
+            <h2 class="section-title">Opinie z Paddocku</h2>
             <div class="opinie-slider-wrapper">
                 <div id="opinieSlider" class="opinie-slider">
                     <div class="opinie-card">
@@ -845,9 +890,9 @@ Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na te
                         </div>
                         <p>"Polecam"</p>
                         <div class="opinie-author">
-                            <img src="https://styles.redditmedia.com/t5_2g9id3/styles/communityIcon_my13x0k65zi41.png?width=128&frame=1&auto=webp&s=6f0cea37ee008d345ed9b267877774419cc6de22" alt="Zdjęcie klienta Jan Kowalski" loading="lazy">
+                            <img src="https://static.oferteo.pl/images/portfolio/5943911/256px_s/1724922029369-crop-1000007448.jpg" alt="Zdjęcie klienta Jan Kowalski" loading="lazy">
                             <div>
-                                <strong>Marek Grabowski</strong>
+                                <strong>Agnieszka Kątek</strong>
                                 <p>Volkswagen Golf</p>
                             </div>
                         </div>
@@ -858,9 +903,9 @@ Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na te
                         </div>
                         <p>"Bardzo miła obsługa polecam"</p>
                         <div class="opinie-author">
-                            <img src="https://4f63e3.cdn.akinoncloud.com/products/2024/11/27/85204/665b79b0-6609-4583-ae68-2ed0362920df_size256_cropCenter.jpg" alt="Skup aut Sosnowskiec" loading="lazy">
+                            <img src="https://static.wixstatic.com/media/6f1304_8c499bcfca124c70a7514bef7d61dec8~mv2.jpg/v1/crop/x_0,y_504,w_3024,h_3024/fill/w_369,h_369,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/cat.jpg" alt="Skup aut Sosnowiec opinie klientów" loading="lazy">
                             <div>
-                                <strong>Henryk Słodki</strong>
+                                <strong>Henryk Walecki</strong>
                                 <p>Opel Astra</p>
                             </div>
                         </div>
@@ -886,7 +931,7 @@ Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na te
                         <div class="opinie-author">
                             <img src="https://styles.redditmedia.com/t5_46g83t/styles/communityIcon_2ikkivg0n2q61.png" alt="skup samochodów osobowych w na terenie całego Śląska" loading="lazy">
                             <div>
-                                <strong>Michał Śliwka</strong>
+                                <strong>Michał Śliwny</strong>
                                 <p>Skoda Fabia</p>
                             </div>
                         </div>
@@ -902,12 +947,12 @@ Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na te
 
     <section id="kontakt" class="hidden">
         <div class="container">
-            <h2 class="section-title">Skontaktuj się z nami aby sprzedać swoje auto</h2>
+            <h2 class="section-title">Wjedź na linię startu!</h2>
             <div class="form-container">
-                <h3>Wypełnij formularz zgłoszeniowy</h3>
-                <p>Wypełnij ten formularz aby zgłosić swoje auto, skontaktujemy się z tobą wkrótce po tym jak to zrobisz</p>
+                <h3>Wypełnij Formularz Zgłoszeniowy</h3>
+                <p>Wrzuć wyższy bieg i zgłoś swoje auto. Skontaktujemy się z Tobą najszybciej jak to możliwe!</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_hnCTS1Le6lskn3ZhrZlNqwSOhJE2JeZw7H9-oUcia1QCpA/viewform" class="btn btn-google-form" target="_blank">
-                    <i class="fab fa-google"></i> Wypełnij formularz zgłoszeniowy
+                    <i class="fab fa-google"></i> Wypełnij Formularz
                 </a>
                 
                 <div class="contact-divider">
@@ -935,14 +980,14 @@ Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na te
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>123kupujemy.pl</h3>
-                    <p>Profesjonalny skup samochodów na Śląsku. Kupujemy auta gotówką w każdym stanie.</p>
+                    <p>Profesjonalny skup samochodów na terenie województwa Śląskiego. Kupujemy jeżdzące auta za gotówke</p>
                 </div>
                 <div class="footer-column">
                     <h3>Kontakt</h3>
                     <ul>
                         <li><i class="fas fa-phone"></i> +48 576 444 751</li>
                         <li><i class="fas fa-envelope"></i> 123kupujemy@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i>Śląsk, Polska</li>
+                        <li><i class="fas fa-map-marker-alt"></i>Województwo Śląskie, Polska</li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -952,11 +997,6 @@ Zajmujemy się skupem używanych, powypadkowych i uszkodzonych samochodów na te
                         <li>Niedz: 10:00 - 22:00</li>
                     </ul>
                 </div>
-            </div>
-            <div class="social-links">
-                <a href="#" aria-label="Nasz profil na Facebooku"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Nasz profil na Instagramie"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Nasz kanał na YouTube"><i class="fab fa-youtube"></i></a>
             </div>
             <div class="copyright">
                 <p>&copy; 2025 123kupujemy.pl. Wszelkie prawa zastrzeżone.</p>
