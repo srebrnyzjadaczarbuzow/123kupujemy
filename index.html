@@ -14,29 +14,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    
+   
     <style>
-        /* ZMIANA: Nowa paleta kolorów inspirowana filmem 'Auta' */
         :root {
-            --primary-color: #b40a0ac5; /* Czerwień Zygzaka McQueena */
-            --secondary-color: #FFC107; /* Żółty wyścigowy */
-            --text-color: #212121; /* Ciemny, prawie czarny */
-            --bg-color: #F5EFE6; /* Kolor pustyni / Radiator Springs */
+            --primary-color: #212121; 
+            --secondary-color: #0cb40c; 
+            --text-color: #181818;
+            --bg-color: #f5efe6f5; 
             --card-bg: #FFFFFF;
-            --header-bg: #212121; /* Kolor asfaltu */
+            --header-bg: #212121;
             --footer-bg: #212121;
             --text-light: #f1f1f1;
-            --transition: all 0.3s ease;
+            --transition: all 0.2s ease;
         }
 
         .dark-mode {
-            --primary-color: #b40a0ac5; /* Czerwień Zygzaka McQueena */
-            --secondary-color: #FFC107;
+            --primary-color: #868686;
+            --secondary-color: #0cb40c; 
             --text-color: #F5EFE6;
             --bg-color: #1a1a1a;
-            --card-bg: #2c2c2c;
-            --header-bg: #000;
-            --footer-bg: #000;
+            --card-bg: #212121;
+            --header-bg: #212121;
+            --footer-bg: #212121;
             --text-light: #f1f1f1;
         }
 
@@ -90,7 +89,7 @@
         }
 
         .logo {
-            font-size: 2.2rem; /* Powiększone logo */
+            font-size: 2.2rem;
             font-weight: bold;
             color: var(--text-light);
             text-decoration: none;
@@ -187,8 +186,6 @@
         .hamburger-menu.active .bar:nth-child(3) {
             transform: translateY(-11px) rotate(-45deg);
         }
-
-        /* ZMIANA: Nowe tło sekcji hero, bardziej w stylu 'Cars' */
         .hero {
             height: 100vh;
             display: flex;
@@ -246,29 +243,28 @@
         }
 
         .btn:hover {
-            background-color: #A00000;
+            background-color: #498cf8;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* ZMIANA: Drugi przycisk ma teraz kolor drugorzędny */
         .btn.btn-secondary {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
-            color: #333;
+            color: #fff;
         }
         .btn.btn-secondary:hover {
-            background-color: #FFB300;
+            background-color: #17c417;
         }
 
 
         .btn-phone {
-            background-color: #27ae60;
-            border-color: #27ae60;
+            background-color: #3481ad;
+            border-color: #3481ad;
         }
 
         .btn-phone:hover {
-            background-color: #229954;
+            background-color: #4187af;
         }
 
         .btn-google-form {
@@ -277,12 +273,11 @@
         }
 
         .btn-whatsapp {
-            background-color: #25D366 !important;
-            color: white;
+            background-color: #1EAE50;
+            color: white !important;
         }
-
         .btn-whatsapp:hover {
-            background-color: #1EAE50 !important;
+            background-color: #25D366 !important;
         }
 
         .btn-whatsapp i {
@@ -401,7 +396,7 @@
 
         .location-list li {
             background-color: var(--primary-color);
-            color: white;
+            color: rgb(255, 255, 255);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: bold;
@@ -620,68 +615,7 @@
             transform: translateY(0);
         }
 
-        .opinie-slider-wrapper {
-            position: relative;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .opinie-slider {
-            position: relative;
-            min-height: 250px;
-            padding: 0 2rem;
-        }
-
-        .opinie-card {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease-in-out;
-            border: 3px solid #ddd;
-        }
-
-        .opinie-card.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .opinie-card::before {
-            content: '\201C';
-            font-family: 'Bangers', cursive;
-            font-size: 6rem;
-            color: var(--primary-color);
-            opacity: 0.2;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-
-        .opinie-author {
-            display: flex;
-            align-items: center;
-            margin-top: 1rem;
-        }
-
-        .opinie-author img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 1rem;
-            border: 2px solid var(--secondary-color);
-        }
-
-        .rating {
-            color: #FFD700;
-            margin: 0.5rem 0;
-        }
+    
 
         .slider-nav {
             position: absolute;
@@ -746,13 +680,13 @@
         }
 
         .cookie-btn:hover {
-            background: #A00000;
+            background: #2b2b2b;
         }
 
         #scrollToTopBtn {
             display: none;
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             right: 30px;
             z-index: 99;
             font-size: 1.5rem;
@@ -763,7 +697,7 @@
             cursor: pointer;
             padding: 15px;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
             transition: opacity 0.3s, background-color 0.3s;
         }
 
@@ -860,7 +794,7 @@ Oferujemy uczciwą wycenę, szybki przebieg transakcji i płatność w gotówce,
             <h2 class="section-title">Nasz Tor Wyścigowy - województwo Śląskie</h2>
             <p style="text-align: center; margin-bottom: 2rem;">Działamy na terenie całego województwa śląskiego. Główne miasta, w których jesteśmy na co dzień:</p>
             <ul class="location-list">
-                <li><i class="fas fa-car-side"></i> Katowice</li>
+                <li><i class="fas fa-car-side"></i><a style="color: #FFFFFF ; align-items: center;" href="katowice.html">Katowice</a></li>
                 <li><i class="fas fa-car-side"></i> Częstochowa</li>
                 <li><i class="fas fa-car-side"></i> Gliwice</li>
                 <li><i class="fas fa-car-side"></i> Zabrze</li>
@@ -875,76 +809,10 @@ Oferujemy uczciwą wycenę, szybki przebieg transakcji i płatność w gotówce,
                 <li><i class="fas fa-car-side"></i> Jaworzno</li>
                 <li><i class="fas fa-car-side"></i> Mysłowice</li>
                 <li><i class="fas fa-car-side"></i> Siemianowice Śląskie</li>
+                <li><i class="fas fa-car-side"></i> Będzin</li>
             </ul>
         </div>
     </section>
-
-    <section id="opinie" class="hidden">
-        <div class="container">
-            <h2 class="section-title">Opinie z Paddocku</h2>
-            <div class="opinie-slider-wrapper">
-                <div id="opinieSlider" class="opinie-slider">
-                    <div class="opinie-card">
-                        <div class="rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"Polecam"</p>
-                        <div class="opinie-author">
-                            <img src="https://static.oferteo.pl/images/portfolio/5943911/256px_s/1724922029369-crop-1000007448.jpg" alt="Zdjęcie klienta Jan Kowalski" loading="lazy">
-                            <div>
-                                <strong>Agnieszka Kątek</strong>
-                                <p>Volkswagen Golf</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="opinie-card">
-                        <div class="rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <p>"Bardzo miła obsługa polecam"</p>
-                        <div class="opinie-author">
-                            <img src="https://static.wixstatic.com/media/6f1304_8c499bcfca124c70a7514bef7d61dec8~mv2.jpg/v1/crop/x_0,y_504,w_3024,h_3024/fill/w_369,h_369,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/cat.jpg" alt="Skup aut Sosnowiec opinie klientów" loading="lazy">
-                            <div>
-                                <strong>Henryk Walecki</strong>
-                                <p>Opel Astra</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="opinie-card">
-                        <div class="rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"Fachowe podejście i świetny kontakt. Cała transakcja przebiegła błyskawicznie i bez żadnych problemów. Jestem bardzo zadowolony. Panie Marku dziękuje za szybką obsługę"</p>
-                        <div class="opinie-author">
-                            <img src="https://i.pinimg.com/564x/57/09/6d/57096d0963a55e74a8c9ed226d9d066b.jpg" alt="Skup samochodów Będzin" loading="lazy">
-                            <div>
-                                <strong>Karol Wiśniewski</strong>
-                                <p>Ford Focus</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="opinie-card">
-                        <div class="rating">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"Bardzo miła obsługa. Polecam."</p>
-                        <div class="opinie-author">
-                            <img src="https://styles.redditmedia.com/t5_46g83t/styles/communityIcon_2ikkivg0n2q61.png" alt="skup samochodów osobowych w na terenie całego Śląska" loading="lazy">
-                            <div>
-                                <strong>Michał Śliwny</strong>
-                                <p>Skoda Fabia</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-nav">
-                    <button id="prevBtn" aria-label="Poprzednia opinia"><i class="fas fa-chevron-left"></i></button>
-                    <button id="nextBtn" aria-label="Następna opinia"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="kontakt" class="hidden">
         <div class="container">
             <h2 class="section-title">Wjedź na linię startu!</h2>
