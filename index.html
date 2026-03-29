@@ -23,8 +23,27 @@
     <meta name="twitter:image" content="https://www.123kupujemy.pl/social-media-image.jpg">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "123kupujemy.pl",
+      "description": "Profesjonalny skup aut za gotówkę w województwie Śląskim.",
+      "url": "https://www.123kupujemy.pl/",
+      "telephone": "+48576444751",
+      "openingHours": ["Mo-Sa 08:00-20:00", "Su 10:00-18:00"],
+      "areaServed": "Województwo Śląskie",
+      "sameAs": [
+        "https://www.instagram.com/123kupujemy.pl/",
+        "https://www.youtube.com/@123kupujemy"
+      ]
+    }
+    </script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SVG icons inline - no external dependency -->
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,6 +124,22 @@
             opacity: 0.8;
         }
 
+        /* Skip to content */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            z-index: 9999;
+            font-weight: 700;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
         /* Nagłówek i Nawigacja */
         header {
             background-color: var(--white-color);
@@ -154,8 +189,13 @@
             padding-bottom: 5px;
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover,
+        nav ul li a.active-link {
             color: var(--primary-color);
+        }
+
+        nav ul li a.active-link::after {
+            width: 100%;
         }
 
         nav ul li a::after {
@@ -312,9 +352,15 @@
             background-color: #e6f6ec;
             width: 70px;
             height: 70px;
-            line-height: 70px;
             border-radius: 50%;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--primary-color);
         }
 
         .feature-card h3 {
@@ -343,11 +389,14 @@
             background-color: var(--white-color);
             width: 80px;
             height: 80px;
-            line-height: 80px;
             border-radius: 50%;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             z-index: 2;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
         
         .process-step h3 {
@@ -432,17 +481,37 @@
             font-weight: 700;
         }
         
+        /* SVG icon helper */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+        }
+        .icon-lg { width: 1.4em; height: 1.4em; }
+        .btn .icon { margin-right: 8px; vertical-align: -0.2em; }
+
         .faq-question::after {
-            content: '\f067'; /* Font Awesome plus icon */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--primary-color);
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z'/%3E%3C/svg%3E");
+            background-size: 14px;
+            background-repeat: no-repeat;
+            background-position: center;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
         
         .faq-item.active .faq-question::after {
-            content: '\f068'; /* Font Awesome minus icon */
-            transform: rotate(180deg);
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 13H5v-2h14v2z'/%3E%3C/svg%3E");
+            transform: rotate(0deg);
         }
         
         .faq-answer {
@@ -530,6 +599,12 @@
         
         .footer-column ul li {
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        .footer-column ul li svg {
+            fill: #a0a0a0;
+            flex-shrink: 0;
         }
         
         .footer-column ul li a {
@@ -554,8 +629,14 @@
             transition: var(--transition);
             display: inline-block;
         }
+        .social-media a svg {
+            fill: #a0a0a0;
+            transition: var(--transition);
+        }
+        .social-media a:hover svg {
+            fill: var(--primary-color);
+        }
         .social-media a:hover {
-            color: var(--primary-color);
             transform: translateY(-5px);
         }
         
@@ -582,6 +663,8 @@
             border-radius: 50%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
+            align-items: center;
+            justify-content: center;
         }
 
         #scrollToTopBtn:hover {
@@ -657,14 +740,268 @@
             .theme-toggle {
                 margin-left: 1rem;
             }
+
+            .toast { right: 1rem; left: 1rem; max-width: none; }
+            .floating-cta { bottom: 1rem; right: 1rem; }
+        }
+
+        /* ============================================
+           NOWE ANIMACJE I FUNKCJE
+        ============================================ */
+
+        /* 1. Parallax hero overlay */
+        .hero {
+            background-attachment: fixed;
+        }
+        @media (max-width: 768px) {
+            .hero { background-attachment: scroll; }
+        }
+
+        /* 2. Animacja wejścia hero - typewriter */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,168,89,0.5); }
+            50%       { box-shadow: 0 0 0 14px rgba(0,168,89,0); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        @keyframes count-up {
+            from { opacity: 0; transform: scale(0.5); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes shimmer {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes bounce-in {
+            0%   { transform: scale(0); opacity: 0; }
+            60%  { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        @keyframes slide-in-right {
+            from { transform: translateX(120px); opacity: 0; }
+            to   { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes car-drive {
+            0%   { transform: translateX(-120px); opacity: 0; }
+            20%  { opacity: 1; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes road-line {
+            0%   { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .hero-content h1 { animation: fadeInUp 0.9s ease both; }
+        .hero-content p   { animation: fadeInUp 0.9s 0.25s ease both; }
+        .hero-content .btn:first-of-type { animation: fadeInUp 0.9s 0.45s ease both; }
+        .hero-content .btn-secondary     { animation: fadeInUp 0.9s 0.6s ease both; }
+
+        /* 3. Header shrink on scroll */
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        header.scrolled .header-content {
+            height: 58px;
+            transition: height 0.3s ease;
+        }
+
+        /* 4. Floating CTA phone button */
+        .floating-cta {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 98;
+            background: var(--primary-color);
+            color: #fff;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 16px rgba(0,168,89,0.45);
+            text-decoration: none;
+            animation: pulse-green 2s infinite;
+            transition: transform 0.25s, background 0.25s;
+        }
+        .floating-cta:hover {
+            background: var(--primary-hover);
+            transform: scale(1.12);
+        }
+        .floating-cta-tooltip {
+            position: absolute;
+            right: 66px;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 0.35rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(6px);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .floating-cta:hover .floating-cta-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* 6. Animowane kroki procesu – linia łącząca + krok wchodzi kolejno */
+        .process-container {
+            position: relative;
+        }
+        .process-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), #a8edca);
+            z-index: 0;
+            border-radius: 3px;
+        }
+        .process-step {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .process-step:nth-child(1) { transition-delay: 0.0s; }
+        .process-step:nth-child(2) { transition-delay: 0.15s; }
+        .process-step:nth-child(3) { transition-delay: 0.30s; }
+        .process-step:nth-child(4) { transition-delay: 0.45s; }
+
+        .process-icon {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .process-step:hover .process-icon {
+            transform: scale(1.18) rotate(-5deg);
+            box-shadow: 0 0 0 8px rgba(0,168,89,0.15);
+        }
+
+        /* 7. Feature card – ikona spin on hover */
+        .feature-card:hover .feature-icon svg {
+            animation: spin-slow 0.7s ease;
+        }
+
+        /* 9. Lokalizacje – animacja wejścia jedna po drugiej */
+        .location-list li {
+            opacity: 0;
+            transform: scale(0.7);
+            transition: opacity 0.35s ease, transform 0.35s ease,
+                        background-color 0.3s ease, color 0.3s ease;
+        }
+        .location-list li.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* 10. Shimmer efekt na logo */
+        .logo {
+            background: linear-gradient(90deg, var(--dark-color) 30%, var(--primary-color) 50%, var(--dark-color) 70%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo:hover {
+            animation: shimmer 1s linear;
+        }
+        .logo span {
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 11. Progress bar czytania strony */
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-color);
+            z-index: 2000;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* 12. Sekcja "Godziny otwarcia" – wskaźnik czy teraz otwarte */
+        .open-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 20px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        .open-badge.closed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .open-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #28a745;
+            animation: pulse-green 1.5s infinite;
+        }
+        .open-badge.closed .open-dot {
+            background: #dc3545;
+            animation: none;
+        }
+
+        /* 14. Hero scroll-down indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: fadeInUp 1s 1s ease both;
+        }
+        @keyframes bounce-arrow {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(6px); }
+        }
+        .scroll-indicator i {
+            animation: bounce-arrow 1.4s infinite;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
+    <div id="reading-progress"></div>
+    <a href="#main-content" class="skip-link">Przejdź do treści</a>
     <header>
         <div class="container header-content">
             <a href="#home" class="logo">123<span>kupujemy.pl</span></a>
-            <nav id="navMenu">
+            <nav id="navMenu" aria-label="Menu główne">
                 <ul>
                     <li><a href="#home">Strona główna</a></li>
                     <li><a href="#dlaczego-my">Dlaczego My</a></li>
@@ -676,9 +1013,9 @@
             </nav>
             <div>
                 <button class="theme-toggle" id="themeToggle" aria-label="Przełącz tryb jasny/ciemny">
-                    <i class="fas fa-moon"></i>
+                    <svg id="themeIcon" class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
                 </button>
-                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menu nawigacyjne">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menu nawigacyjne" aria-expanded="false" aria-controls="navMenu">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -687,13 +1024,17 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero" id="home">
             <div class="container hero-content">
                 <h1>Szybki i Pewny Skup Aut na Śląsku</h1>
                 <p>Otrzymaj gotówkę od ręki. Oferujemy darmową wycenę i bezpłatny dojazd do Ciebie.</p>
-                <a href="tel:+48576444751" class="btn"><i class="fas fa-phone"></i> Zadzwoń Teraz</a>
+                <a href="tel:+48576444751" class="btn"><svg class="icon" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg> Zadzwoń Teraz</a>
                 <a href="#kontakt" class="btn btn-secondary">Wypełnij Formularz</a>
+            </div>
+            <div class="scroll-indicator">
+                <span>Przewiń</span>
+                <svg class="icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
             </div>
         </section>
 
@@ -703,17 +1044,17 @@
                 <p class="section-subtitle">Koncentrujemy się na trzech kluczowych wartościach, aby sprzedaż Twojego auta była prosta, szybka i komfortowa.</p>
                 <div class="features">
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="feature-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
                         <h3>Płatność Gotówką</h3>
                         <p>Otrzymujesz pieniądze do ręki natychmiast po podpisaniu umowy. Bez zbędnego czekania i formalności.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-car-side"></i></div>
+                        <div class="feature-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg></div>
                         <h3>Dojazd do Klienta</h3>
                         <p>Działamy na terenie całego Śląska. Dojedziemy we wskazane przez Ciebie miejsce, oszczędzając Twój czas.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div class="feature-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/><path d="M12 2C6.48 2 2 6.48 2 12c0 2.76 1.12 5.26 2.93 7.07L6.34 17.66C4.9 16.22 4 14.22 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.22-.9 4.22-2.34 5.66l1.41 1.41C20.88 17.26 22 14.76 22 12c0-5.52-4.48-10-10-10zm0 5l-4 7h8l-4-7z"/></svg></div>
                         <h3>Ekspresowa Wycena</h3>
                         <p>Wycenimy Twoje auto za darmo i bez żadnych zobowiązań. Wystarczy jeden telefon lub formularz.</p>
                     </div>
@@ -759,7 +1100,7 @@
                         <p>Specjalizujemy się w autach sprawnych technicznie. Nie musi być ono w idealnym stanie wizualnym – interesują nas również pojazdy z większym przebiegiem czy śladami normalnego użytkowania. Dla nas najważniejsze jest zaufanie i satysfakcja klienta.</p>
                     </div>
                     <div class="about-image">
-                        <img src="mareczekmaruszka.png" alt="Zespół 123kupujemy.pl podczas pracy przy samochodzie">
+                        <img src="mareczekmaruszka.png" alt="Zespół 123kupujemy.pl podczas pracy przy samochodzie" loading="lazy" width="600" height="400">
                     </div>
                 </div>
             </div>
@@ -826,27 +1167,27 @@
                 <h2 class="section-title">Gotowy na Sprzedaż Auta?</h2>
                 <p class="section-subtitle">Skontaktuj się z nami w najwygodniejszy dla Ciebie sposób. Odpowiemy najszybciej, jak to możliwe!</p>
                 <div class="contact-container">
-                    <h3>Wypełnij Formularz Wyceny</h3>
-                    <p>Kliknij poniższy przycisk, aby przejść do formularza Google i podać szczegóły dotyczące Twojego samochodu.</p>
-                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_hnCTS1Le6lskn3ZhrZlNqwSOhJE2JeZw7H9-oUcia1QCpA/viewform" class="btn" target="_blank" rel="noopener noreferrer" style="margin-top: 1rem; margin-bottom: 2rem;">
-                        <i class="fab fa-google"></i> Przejdź do Formularza
-                    </a>
-                    <h3>Lub skontaktuj się bezpośrednio</h3>
                     <div class="contact-options">
                         <div class="contact-info">
-                            <a href="tel:+48576444751"><i class="fas fa-phone"></i> +48 576 444 751</a>
+                            <a href="tel:+48576444751"><svg class="icon" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg> +48 576 444 751</a>
                         </div>
                          <div class="contact-info">
-                            <a href="https://wa.me/48576444751" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Porozmawiaj na WhatsApp</a>
+                            <a href="https://wa.me/48576444751" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg> Porozmawiaj na WhatsApp</a>
                         </div>
                         <div class="contact-info">
-                           <a href="mailto:123kupujemy@gmail.com"><i class="fas fa-envelope"></i> 123kupujemy@gmail.com</a>
+                           <a href="mailto:123kupujemy@gmail.com"><svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> 123kupujemy@gmail.com</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Floating CTA -->
+    <a href="tel:+48576444751" class="floating-cta" aria-label="Zadzwoń do nas">
+        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="white"/></svg>
+        <span class="floating-cta-tooltip">Zadzwoń teraz!</span>
+    </a>
     
     <footer>
         <div class="container">
@@ -858,9 +1199,9 @@
                 <div class="footer-column">
                     <h3>Kontakt</h3>
                     <ul>
-                        <li><i class="fas fa-phone" style="margin-right: 8px;"></i> <a href="tel:+48576444751">+48 576 444 751</a></li>
-                        <li><i class="fas fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:123kupujemy@gmail.com">123kupujemy@gmail.com</a></li>
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><span>Województwo Śląskie</span></li>
+                        <li><svg class="icon" viewBox="0 0 24 24" style="margin-right:8px"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg> <a href="tel:+48576444751">+48 576 444 751</a></li>
+               <li><svg class="icon" viewBox="0 0 24 24" style="margin-right:8px"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> <a href="mailto:123kupujemy@gmail.com">123kupujemy@gmail.com</a></li>
+                        <li><svg class="icon" viewBox="0 0 24 24" style="margin-right:8px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Województwo Śląskie</span></li>
                     </ul>
                 </div>
                  <div class="footer-column">
@@ -868,126 +1209,196 @@
                     <ul>
                         <li>Pon-Sob: 8:00 - 20:00</li>
                         <li>Niedziela: 10:00 - 18:00</li>
+                        <li style="margin-top:0.8rem;"><span class="open-badge" id="openBadge"><span class="open-dot"></span><span id="openText">Sprawdzam...</span></span></li>
                     </ul>
                 </div>
             </div>
             
             <div class="social-media">
-                <a href="https://www.instagram.com/123kupujemy.pl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@123kupujemy" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/123kupujemy.pl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+                <a href="https://www.youtube.com/@123kupujemy" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2025 123kupujemy.pl - Wszelkie prawa zastrzeżone.</p>
+                <p>&copy; <span id="currentYear"></span> 123kupujemy.pl - Wszelkie prawa zastrzeżone.</p>
             </div>
         </div>
     </footer>
     
     <button id="scrollToTopBtn" aria-label="Przewiń do góry strony">
-        <i class="fas fa-chevron-up"></i>
+        <svg class="icon" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z" fill="white"/></svg>
     </button>
 
-    <script>
-        // Przełącznik trybu jasny/ciemny
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
-        // Sprawdzenie zapisanego trybu w localStorage
+        /* ── Tryb ciemny ── */
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const moonPath = "M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z";
+        const sunPath  = "M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2v-2H2v2zm18 0h2v-2h-2v2zM11 2v2h2V2h-2zm0 18v2h2v-2h-2zM5.64 6.35l-1.41-1.42-1.41 1.41 1.41 1.42 1.41-1.41zM18.36 18.36l1.41 1.41 1.41-1.41-1.41-1.41-1.41 1.41zM4.22 17.65l1.41 1.41 1.42-1.41-1.42-1.41-1.41 1.41zM17.66 6.35l1.41-1.42-1.41-1.41-1.41 1.41 1.41 1.42z";
+
         const currentTheme = localStorage.getItem('theme') || 'light';
         if (currentTheme === 'dark') {
             document.body.setAttribute('data-theme', 'dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.querySelector('path').setAttribute('d', sunPath);
         }
-
         themeToggle.addEventListener('click', () => {
-            const currentTheme = document.body.getAttribute('data-theme');
-            
-            if (currentTheme === 'dark') {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
                 document.body.removeAttribute('data-theme');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
+                themeIcon.querySelector('path').setAttribute('d', moonPath);
                 localStorage.setItem('theme', 'light');
             } else {
                 document.body.setAttribute('data-theme', 'dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+                themeIcon.querySelector('path').setAttribute('d', sunPath);
                 localStorage.setItem('theme', 'dark');
             }
         });
 
-        // Menu mobilne
+        /* ── Rok ── */
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        /* ── Menu mobilne ── */
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const navMenu = document.getElementById('navMenu');
-
         hamburgerMenu.addEventListener('click', () => {
-            hamburgerMenu.classList.toggle('active');
+            const isOpen = hamburgerMenu.classList.toggle('active');
             navMenu.classList.toggle('active');
+            hamburgerMenu.setAttribute('aria-expanded', isOpen);
         });
-
-        // Zamknij menu po kliknięciu w link
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburgerMenu.classList.remove('active');
                 navMenu.classList.remove('active');
+                hamburgerMenu.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // FAQ accordion
+        /* ── FAQ accordion z klawiaturą ── */
         const faqItems = document.querySelectorAll('.faq-item');
-
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                // Zamknij wszystkie inne otwarte pytania
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('role', 'button');
+            const toggle = () => {
+                faqItems.forEach(other => {
+                    if (other !== item && other.classList.contains('active')) {
+                        other.classList.remove('active');
+                        other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                     }
                 });
-                
-                // Przełącz aktualne pytanie
-                item.classList.toggle('active');
+                const expanded = item.classList.toggle('active');
+                question.setAttribute('aria-expanded', expanded);
+            };
+            question.addEventListener('click', toggle);
+            question.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
             });
         });
 
-        // Przycisk powrotu na górę
+        /* ── Scroll-to-top ── */
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.style.display = 'block';
-            } else {
-                scrollToTopBtn.style.display = 'none';
-            }
-        });
+            scrollToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        }, { passive: true });
+        scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Animacje przy przewijaniu
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        /* ── IntersectionObserver – sekcje fade-in ── */
+        const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.hidden').forEach(el => {
-            observer.observe(el);
-        });
+        /* ── Aktywny link nav ── */
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const navObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active-link');
+                        if (link.getAttribute('href') === '#' + entry.target.id)
+                            link.classList.add('active-link');
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        sections.forEach(s => navObserver.observe(s));
+
+        /* ── 1. Header shrink on scroll ── */
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        /* ── 2. Reading progress bar ── */
+        const progressBar = document.getElementById('reading-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+        }, { passive: true });
+
+        /* ── 4. Kroki procesu – animacja kaskadowa ── */
+        const processObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.process-step').forEach(step => step.classList.add('visible'));
+                    processObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        const processSection = document.getElementById('jak-dzialamy');
+        if (processSection) processObserver.observe(processSection);
+
+        /* ── 5. Lokalizacje – jedna po drugiej ── */
+        const locObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const items = entry.target.querySelectorAll('.location-list li');
+                    items.forEach((li, i) => {
+                        setTimeout(() => li.classList.add('visible'), i * 60);
+                    });
+                    locObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        const locSection = document.getElementById('obszar-dzialania');
+        if (locSection) locObserver.observe(locSection);
+
+        /* ── 7. Wskaźnik godzin otwarcia ── */
+        function checkOpenStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0=niedz, 1-6=pon-sob
+            const h = now.getHours();
+            const m = now.getMinutes();
+            const time = h * 60 + m;
+            let open = false;
+            if (day >= 1 && day <= 6) open = time >= 480 && time < 1200; // 8-20
+            if (day === 0) open = time >= 600 && time < 1080; // 10-18
+            const badge = document.getElementById('openBadge');
+            const text  = document.getElementById('openText');
+            if (badge && text) {
+                if (open) {
+                    badge.classList.remove('closed');
+                    text.textContent = 'Teraz otwarte';
+                } else {
+                    badge.classList.add('closed');
+                    badge.querySelector('.open-dot').style.animation = 'none';
+                    text.textContent = 'Teraz zamknięte';
+                }
+            }
+        }
+        checkOpenStatus();
+
+        /* ── 9. Shimmer logo on load ── */
+        document.querySelector('.logo').style.animation = 'shimmer 1.5s linear';
+
     </script>
 </body>
 </html>
